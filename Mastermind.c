@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include <time.h>
+#include <unistd.h>
 
 int main()
 {int n,x,a,b,c,d,a1,b1,c1,d1,flag=1,count=0,countpos=0,i=0;
@@ -19,6 +20,10 @@ do{
     if(a!=b && a!=c && a!=d && b!=c && b!=d && c!=d)
         flag=0;
 }while(flag==1);
+
+double time_spent = 0.0;
+clock_t begin = clock();
+
 do{
     do {
         printf("inserire un numero di 4 cifre differenti tra loro:\n");
@@ -68,6 +73,11 @@ do{
     i++;
 
 }while(n!=x );
+
+sleep(3);
+clock_t end = clock();
+time_spent += (double)(end - begin) / CLOCKS_PER_SEC;
+printf("Il tempo trascorso e' %f secondi", time_spent);
 
 printf("numero di tentativi: %d",i);
 
